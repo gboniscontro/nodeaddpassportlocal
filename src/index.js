@@ -8,6 +8,7 @@ const productosRouter = require('./routes/productsRoutes');
 const carritoRouter = require('./routes/carritoRoutes');
 const defRoute = require('./routes/default')
 const webRoute = require('./routes/webRoutes')
+const random = require('./routes/random')
 
 const { ContenedorFake } = require('./contenedorfake')
 const { Contenedor } = require('./contenedorsql') //, ContenedorMensaje 
@@ -63,6 +64,7 @@ var port = process.env.PORT || 8080;
 
 app.use('/api/productos', apiAuth, productosRouter);
 app.use('/api/carrito', apiAuth, carritoRouter);
+app.use('/api/randoms',  random);
 
 app.use('/', webPass)
 app.use('/', webRoute)

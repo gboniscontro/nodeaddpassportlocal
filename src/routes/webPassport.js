@@ -86,5 +86,24 @@ webPass.get('/login', (req, res) => {
         res.redirect('/login.html')
     }
 })
+webPass.get('/info', (req, res) => {
+    let shtml = "<html>"
+
+    shtml += '<br>---------------------------------------------'
+    shtml += '<br>         EL PROCESO DE NODE.JS         '
+    shtml += '<br>Id del proceso ........... ' + process.pid
+    shtml += '<br>Título.................... ' + process.title
+    shtml += '<br>Directorio de Node........ ' + process.execPath
+    shtml += '<br>Directorio Actual......... ' + process.cwd()
+    shtml += '<br>Versión de Node........... ' + process.version
+    shtml += '<br>Plataforma (S.O.)......... ' + process.platform
+    shtml += '<br>Arquitectura (S.O.)....... ' + process.arch
+    shtml += '<br>Tiempo activo de Node..... ' + process.uptime()
+    shtml += '<br>Argumentos del proceso.... ' + process.argv
+    shtml += '<br>Memoria Reservada rss' + process.memoryUsage().rss
+    res.send(shtml)
+
+
+})
 
 module.exports = webPass
