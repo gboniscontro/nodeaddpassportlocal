@@ -1,9 +1,16 @@
+const { string } = require('joi');
+const parseArgs = require('minimist')
 require('dotenv').config()
+const options = { alias: { p: "port", m: "modo" } };
+const puerto = parseArgs(process.argv, options).port;
+const modo = parseArgs(process.argv, options).modo?.toUpperCase();
+
 
 module.exports = {
 	NODE_ENV: process.env.NODE_ENV || 'development',
 	HOST: process.env.HOST || 'localhost',
-	PORT: process.env.PORT || 8000,
+	PORT: puerto || process.env.PORT || 8080,
+	MODO: modo || 'FORK',
 	SESSION_MAXAGE: process.env.SESSION_MAXAGE || 600000,
 	SECRET: process.env.SECRET || 'C0d3rTeco',
 	//CORS_ORIG: process.env.CORS_ORIG || '*',

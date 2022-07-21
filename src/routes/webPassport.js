@@ -6,6 +6,7 @@ const passport = require('passport')
 const initializePassport = require('../passport.config.js')
 const { passAuth } = require('../middlewares/admin')
 const path = require('path')
+const os = require('os')
 
 
 
@@ -101,6 +102,7 @@ webPass.get('/info', (req, res) => {
     shtml += '<br>Tiempo activo de Node..... ' + process.uptime()
     shtml += '<br>Argumentos del proceso.... ' + process.argv
     shtml += '<br>Memoria Reservada rss' + process.memoryUsage().rss
+    shtml += '<br>Numero de Procesadores ' + os.cpus().length
     res.send(shtml)
 
 

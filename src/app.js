@@ -17,6 +17,7 @@ const Normal = require('./normal')
 const path = require('path');
 const { apiAuth, webAuth } = require('./middlewares/admin');
 const webPass = require('./routes/webPassport');
+const { MODO } = require('./config/globals');
 
 
 const app = express();
@@ -34,7 +35,7 @@ let contenedor = new Contenedor('sqlite')
 let contenedorfake = new ContenedorFake()
 let contmensj = new ContenedorMensaje()
 
-
+console.log(MODO);
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -58,7 +59,6 @@ app.set("views", path.join(__dirname, 'views'));
 
 
 
-var port = process.env.PORT || 8080;
 
 
 
@@ -139,12 +139,13 @@ io.on('connection', async function (socket) {
 
 
 
+/*
 
-
-const serv = server.listen(port, () => {
+const serv = server.listen(PORT, () => {
     console.log('listening on port', serv.address().port);
 })
 serv.on('error', err => console.error('listening on port', err))
+*/
 /*
 
 warning app not work with socket.io hay que usar httpserver
@@ -152,3 +153,4 @@ app.listen(port, () => {
     console.log(`Escuchando en el puerto 8080`);
 });
 */
+module.exports = app
