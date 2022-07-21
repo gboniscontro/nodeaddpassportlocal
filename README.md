@@ -2,7 +2,7 @@
 node src/server.js --modo "CLUSTER"
 node src/server.js --modo "FORK"
 //por defecto es modo fork
-node src/server.js
+node src/server.js 
 //pm2 ejecucion
 pm2 start src/server.js
 //actualiza cuando hago alguna modificacion

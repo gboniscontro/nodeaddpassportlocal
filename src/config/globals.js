@@ -4,7 +4,7 @@ require('dotenv').config()
 const options = { alias: { p: "port", m: "modo" } };
 const puerto = parseArgs(process.argv, options).port;
 const modo = parseArgs(process.argv, options).modo?.toUpperCase();
-
+  
 
 module.exports = {
 	NODE_ENV: process.env.NODE_ENV || 'development',
