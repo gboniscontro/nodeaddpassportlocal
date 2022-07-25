@@ -3,7 +3,15 @@ const parseArgs = require('minimist')
 require('dotenv').config()
 const options = { alias: { p: "port", m: "modo" } };
 const puerto = parseArgs(process.argv, options).port;
-const modo = parseArgs(process.argv, options).modo?.toUpperCase();
+
+let modo = parseArgs(process.argv, options).modo
+if (typeof modo === 'string') {	
+	modo = modo.toUpperCase();
+}
+else{
+	//console.log(modo)
+	modo = "FORK"
+}
   
 
 module.exports = {

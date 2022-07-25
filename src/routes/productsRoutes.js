@@ -5,7 +5,8 @@ const {Router} = express;
 
 const router = Router();
 
-router.get('/',productsController.getAll);
+router.get('/',
+productsController.getAll);
 
 router.get("/:id",productsController.getById);
 

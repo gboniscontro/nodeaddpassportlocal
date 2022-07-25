@@ -18,6 +18,7 @@ const path = require('path');
 const { apiAuth, webAuth } = require('./middlewares/admin');
 const webPass = require('./routes/webPassport');
 const { MODO } = require('./config/globals');
+const compression = require('compression');
 
 
 const app = express();
@@ -36,7 +37,9 @@ let contenedorfake = new ContenedorFake()
 let contmensj = new ContenedorMensaje()
 
 console.log(MODO);
-
+app.use(compression({
+    threshold: 1000
+}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -64,7 +67,7 @@ app.set("views", path.join(__dirname, 'views'));
 
 app.use('/api/productos', apiAuth, productosRouter);
 app.use('/api/carrito', apiAuth, carritoRouter);
-app.use('/api/randoms',  random);
+app.use('/api/randoms', random);
 
 app.use('/', webPass)
 app.use('/', webRoute)
